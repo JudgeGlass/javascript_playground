@@ -1,0 +1,35 @@
+meta {
+  name: User Add
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/useradd
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "first_name": "Hunter",
+    "last_name": "Wilcox",
+    "age": 22,
+    "street_address": "700 My House Dr",
+    "city": "Chattanooga",
+    "zip_code": "37421",
+    "phone_number": "+17776665555",
+    "employment_type": "Full-Time",
+    "hours": 40,
+    "manager": "John Doe",
+    "cost_center": "R&D_usa",
+    "access_level": "employee",
+    "employee_id": "123456789",
+    "db_id": "36b8f84d-df4e-4d49-b662-bcde71a8764f"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
