@@ -1,0 +1,26 @@
+const express = require('express');
+const path = require('path');
+const get_database = require('../scripts/database.js');
+var router = express.Router();
+
+async function read_db()
+{
+  db = await get_database()
+  console.log(db)
+  const result = await db.collection('mycollection').find().toArray();
+  console.log(`Result: ${JSON.stringify(result)}`)
+}
+
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.sendFile(path.join(__dirname + '/../pages/index.html'))
+});
+
+router.get('/test2', function(req, res, next) {
+  console.log(`Var1: ${req.query.var1} - Var2: ${req.query.var2}`)
+  read_db()
+  res.sendFile(path.join(__dirname + '/../pages/index.html'))
+});
+
+module.exports = router;
